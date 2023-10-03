@@ -1,0 +1,58 @@
+{
+	"root": true,
+	"ignorePatterns": [
+		"*.min.js"
+	],
+	"overrides": [
+		{
+			"files": [
+				"*.js"
+			],
+			"extends": [
+				"eslint:recommended",
+				"prettier"
+			],
+			"env": {
+				"browser": true
+			},
+			"parserOptions": {
+				"ecmaVersion": "latest"
+			}
+		},
+		{
+			"files": [
+				"*.php"
+			],
+			"parser": "@angular-eslint/template-parser",
+			"plugins": [
+				"php-markup",
+				"tailwindcss"
+			],
+			"extends": [
+				"plugin:tailwindcss/recommended"
+			],
+			"rules": {
+				"tailwindcss/migration-from-tailwind-2": "off",
+				"tailwindcss/no-custom-classname": [
+					"warn",
+					{
+						"config": "./config/tailwind/tailwind.config.js",
+						"whitelist": [
+							"(page|entry|comment)\\-([-a-z]*)",
+							"vcard"
+						]
+					}
+				]
+			},
+			"settings": {
+				"tailwindcss": {
+					"config": "./config/tailwind/tailwind.config.js",
+					"cssFiles": [
+						"./src/**/*.css"
+					],
+					"officialSorting": true
+				}
+			}
+		}
+	]
+}
